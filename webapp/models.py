@@ -9,5 +9,5 @@ class Streamer(models.Model):
         ordering = ['-timestamp']
     
 
-    # def __str__(self):
-    #     return self.data_stream
+    def __str__(self):
+        return self.data_stream
