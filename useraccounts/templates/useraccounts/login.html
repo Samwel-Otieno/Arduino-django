@@ -9,6 +9,14 @@
 <body>
     <p><center><b>LOGIN!!</b></center></p>
     <a href="{% url 'useraccounts:logout' %}">Logout</a>
-    <a href="{% url 'webapp:index' %}">Home</a>
+    <a href="{% url 'webapp:home' %}">Home</a>
+    {% block content %}
+    <form action="{% url 'useraccounts:login' %}" method="post">  
+        {% csrf_token %}   
+        <input type="text" name="username" id="" placeholder="username"><br><br>
+        <input type="password" name="password" id="" placeholder="password"><br><br>
+        <input type="submit" value="Login">
+    </form>
+    {% endblock content %}
 </body>
 </html>

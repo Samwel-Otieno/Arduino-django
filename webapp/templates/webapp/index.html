@@ -8,6 +8,9 @@
 </head>
 <body>
     <p><center><b>HOME!!</b></center></p>
+    {% if user.is_authenticated %}
+        <p>Hello {{ user.first_name }}</p> <br>
+    {% endif %}
     <a href="{% url 'useraccounts:register' %}">sign-up</a>
     <a href="{% url 'useraccounts:login' %}">Login</a>
     <a href="{% url 'useraccounts:logout' %}">Logout</a>

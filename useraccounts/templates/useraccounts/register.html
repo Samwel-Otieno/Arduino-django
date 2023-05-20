@@ -10,10 +10,12 @@
     <p><center><b>REGISTER!!</b></center></p>
     <a href="{% url 'useraccounts:login' %}">Login</a>
     <a href="{% url 'webapp:home' %}">Home</a>
+    {% block content %}
     <form action="{% url 'useraccounts:register' %}" method="post">
         {% csrf_token %}
         {{ user_form.as_p }}
         <input type="submit" value="sign-up">
     </form>
+    {% endblock content %}
 </body>
 </html>
