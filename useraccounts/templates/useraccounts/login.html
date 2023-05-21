@@ -8,6 +8,13 @@
 </head>
 <body>
     <p><center><b>LOGIN!!</b></center></p>
+    {% if messages %}
+        {% for message in messages %}
+        <div style="color:red;">
+            {{message}}
+        </div>     
+        {% endfor %}
+    {% endif %} <br>
     <a href="{% url 'useraccounts:logout' %}">Logout</a>
     <a href="{% url 'webapp:home' %}">Home</a>
     {% block content %}

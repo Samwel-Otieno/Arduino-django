@@ -2,7 +2,10 @@ from django.shortcuts import render,redirect
 from .forms import *
 from django.contrib import messages
 from django.contrib.auth.models import auth
+from django.contrib.auth import authenticate,login
 from django.http import HttpResponse
+from django.core.mail import send_mail
+from django.conf import settings
 # Create your views here.
 
 # User registration view
@@ -16,7 +19,7 @@ def Registerview(request):
             new_user.set_password(user_form.cleaned_data['password1'])
             # Save the User object
             new_user.save()
-            messages.success(request, "Registration successful")
+            messages.success(request, "Registration successful!!")
             return redirect("useraccounts:login")
     else:
         user_form=RegistrationForm()
@@ -28,8 +31,15 @@ def login(request):
         username=request.POST.get('username')
         password=request.POST.get('password')
         user=auth.authenticate(username=username, password=password)
+
         if user is not None:          
             auth.login(request,user)
+            # send_mail(
+            #     subject='User log',
+            #     message= username +' logged in today',
+            #     from_email=settings.EMAIL_HOST_USER,
+            #     recipient_list=[user.email]
+            #     )
             return render(request, 'webapp/index.html')
     else:
         return render(request, 'useraccounts/login.html')
