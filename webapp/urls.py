@@ -4,6 +4,7 @@ from . import views
 app_name='webapp'
 
 urlpatterns=[
-    path('index/', views.index, name='home'),  
+    path('home/', views.index, name='home'), 
+    path('excelData', views.excelData, name='excelData'), 
     
 ]

@@ -17,6 +17,7 @@ void loop() {
 }
 
 void stream(){
+  delay(5000);
   float sensorvalue= analogRead(pot);
   Serial.println(sensorvalue);
   delay(500);
