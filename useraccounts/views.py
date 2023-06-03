@@ -6,10 +6,13 @@ from django.contrib.auth import authenticate,login
 from django.http import HttpResponse
 from django.core.mail import send_mail
 from django.conf import settings
+from datetime import datetime
+import pytz
 # Create your views here.
 
 # User registration view
 def Registerview(request):
+    pass
     if (request.method=='POST'):
         user_form=RegistrationForm(request.POST)
         if user_form.is_valid():
@@ -34,12 +37,15 @@ def login(request):
 
         if user is not None:          
             auth.login(request,user)
-            # send_mail(
-            #     subject='User log',
-            #     message= username +' logged in today',
-            #     from_email=settings.EMAIL_HOST_USER,
-            #     recipient_list=[user.email]
-            #     )
+            format="%Y-%m-%d %H:%M:%S %Z"
+            time =datetime.now(pytz.timezone('Africa/Nairobi'))
+            login_time=time.strftime(format)
+            send_mail(
+                subject='User log',
+                message= username +' logged in today at: '+ login_time,
+                from_email=settings.EMAIL_HOST_USER,
+                recipient_list=["sotieno679@gmail.com"]
+                )
             return render(request, 'webapp/index.html')
     else:
         return render(request, 'useraccounts/login.html')
