@@ -1,3 +1,5 @@
+
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,6 +7,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>home</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+    
 </head>
 <body>
     <p><center><b>HOME!!</b></center></p>
@@ -18,8 +22,28 @@
         <a href="{% url 'webapp:excelData' %}"> export to excel </a>
     {% else %}
         <a href="{% url 'useraccounts:register' %}">sign-up</a>
-        <a href="{% url 'useraccounts:login' %}">Login</a>
+        <a href="{% url 'useraccounts:login' %}">Login</a> <br><br>
     {% endif %}
+
+    <h4>Session Stream: </h4><br>
+    <button id="bang"> show data </button>
+        <div class="hidden" id="show_data">
+            <table>
+                <tr>
+                    <th>Data</th>
+                    <th>Time Stamp</th>
+                </tr>
+                {% for data in data %}
+                <tr>           
+                    <td>{{data.data_stream}}</td>  
+                    <td>{{data.timestamp}}</td>     
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+
+            
+        <script src="{% static 'JS/mAin.js' %}"></script>
 
 </body>
 </html>

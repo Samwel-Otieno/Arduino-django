@@ -5,6 +5,6 @@ app_name='webapp'
 
 urlpatterns=[
     path('home/', views.index, name='home'), 
-    path('excelData', views.excelData, name='excelData'), 
+    path('excelData', views.excelData, name='excelData'),
     
 ]

@@ -11,4 +11,4 @@ class Streamer(models.Model):
     
 
     def __str__(self):
-        return self.data_stream
+        return self.operator

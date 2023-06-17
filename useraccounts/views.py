@@ -9,7 +9,6 @@ from django.conf import settings
 from datetime import datetime
 import pytz
 # Create your views here.
-
 # User registration view
 def Registerview(request):
     pass
@@ -42,7 +41,7 @@ def login(request):
             login_time=time.strftime(format)
             send_mail(
                 subject='User log',
-                message= username +' logged in today at: '+ login_time,
+                message= f" {username} logged in today at: {login_time} \n Session stream : \n ",
                 from_email=settings.EMAIL_HOST_USER,
                 recipient_list=["sotieno679@gmail.com"]
                 )
