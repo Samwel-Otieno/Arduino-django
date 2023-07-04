@@ -11,7 +11,7 @@
     <a href="{% url 'useraccounts:login' %}">Login</a>
     <a href="{% url 'webapp:home' %}">Home</a>
     {% block content %}
-    <form action="{% url 'useraccounts:register' %}" method="post">
+    <form action="{% url 'useraccounts:register' %}" method="post" enctype="multipart/form-data">
         {% csrf_token %}
         {{ user_form.as_p }}
         <input type="submit" value="sign-up">

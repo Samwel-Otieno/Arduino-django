@@ -11,9 +11,8 @@ import pytz
 # Create your views here.
 # User registration view
 def Registerview(request):
-    pass
     if (request.method=='POST'):
-        user_form=RegistrationForm(request.POST)
+        user_form=RegistrationForm(request.POST,request.FILES)
         if user_form.is_valid():
             # Create a new user object but avoid saving it yet
             new_user = user_form.save(commit=False)

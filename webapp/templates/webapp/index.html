@@ -20,9 +20,6 @@
             <input type="submit" value="START STREAM"><br>
         </form>
         <a href="{% url 'webapp:excelData' %}"> export to excel </a>
-    {% else %}
-        <a href="{% url 'useraccounts:register' %}">sign-up</a>
-        <a href="{% url 'useraccounts:login' %}">Login</a> <br><br>
     {% endif %}
 
     <h4>Session Stream: </h4><br>

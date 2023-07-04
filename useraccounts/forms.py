@@ -4,7 +4,7 @@ from django import forms
 class RegistrationForm(forms.ModelForm):
     password1=forms.CharField(label='password', widget=forms.PasswordInput)
     password2=forms.CharField(label='Confirm password', widget=forms.PasswordInput)
-
+    profile=forms.ImageField(label='Select an image', widget=forms.ClearableFileInput(attrs={'accept': 'image/*'}))
     #model other parameters from the User method
     class Meta:
         model=User

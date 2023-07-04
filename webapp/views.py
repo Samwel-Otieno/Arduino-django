@@ -6,6 +6,9 @@ from django.http import HttpResponse
 import xlwt
 from datetime import datetime
 from .models import Streamer
+from drawnow import *
+import matplotlib.pyplot as plt
+
 
 # Create your views here.
 @login_required
@@ -24,6 +27,15 @@ def index(request):
 
     # render the data for display
     data=Streamer.objects.all()
+    ''' dataplot=float(data)
+
+    #plot the data
+    def plotter():
+        plt.plot(dataplot)
+        plt.ylabel('Data')
+        plt.title("Sensor data")
+    drawnow(plotter)
+    pause(0.001) '''
     return render(request, 'webapp/index.html',{'data':data})
 
 # Export the data into ana excel spreadsheet

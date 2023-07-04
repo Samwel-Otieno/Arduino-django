@@ -17,6 +17,7 @@
     {% endif %} <br>
     <a href="{% url 'useraccounts:logout' %}">Logout</a>
     <a href="{% url 'webapp:home' %}">Home</a>
+    <a href="{% url 'useraccounts:register' %}">sign-up</a>
     {% block content %}
     <form action="{% url 'useraccounts:login' %}" method="post">  
         {% csrf_token %}   
