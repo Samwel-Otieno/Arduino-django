@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>lipa</title>
+</head>
+<body>
+    <h3><center><b>PAY HERE!!</b></center></h3>
+    <br>
+    <form action="" method="post">
+        {% csrf_token %}
+        <h3>Enter your details to make payment</h3>
+        <label for="name">Your names: </label>
+        <input type="text" name="names" id="name"><br><br>
+        <label for="Id_number">Id No.: </label>
+        <input type="number" name="Id Number" id="Id_number"><br><br>
+        <label for="payments">Select a payment method:</label>
+        <select id="payments" name="payments"><br><br>
+            <option value="Direct deposit">Mobile deposit</option>
+            <option value="Pay bill ">paybill</option>
+            <option value="Till number">Till number</option>
+            <option value="Pochi">Pochi la biashara</option>
+        </select><br><br>
+        <input type="text" name="description" placeholder="any comments?"><br>
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>

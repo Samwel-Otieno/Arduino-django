@@ -15,6 +15,7 @@
     {% if user.is_authenticated %}
         <p>Hello {{ user.first_name }}</p> <br>
         <a href="{% url 'useraccounts:logout' %}">Logout</a>
+        <a href="{% url 'mpesapay:mpesa' %}">Pay for stream</a>
         <form action="{% url 'webapp:home' %}" method="post"><br>
             {% csrf_token %}
             <input type="submit" value="START STREAM"><br>
