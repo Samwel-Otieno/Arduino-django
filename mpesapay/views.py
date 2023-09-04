@@ -1,26 +1,34 @@
 from django.shortcuts import render
 from django.views import View
+from .forms import Mpesadata
+from django_daraja.mpesa.core import MpesaClient
 
 # Create your views here.
 
 class Mpesapay(View):
+    formClass=Mpesadata
     template_name="mpesapay/lipanampesa.html"
+    initial={'keny':'value'}
     def get(self,request):
-        return render(request, self.template_name)
+        form=self.formClass(initial=self.initial)
+        return render(request, self.template_name,{'form':form})
     
     def post(self,request):
-        name=request.POST.get('names')
-        id_number=request.POST.get("Id Number")
-        means=request.POST.get("payments")
-        description=request.POST.get("description")
-
-        #USE SWITCH CASE ON PAYMENTS TO CHECK THE PAYMENT METHOD SELECTED AND 
-        match means:
-            case "Direct deposit":
-                pass
-            case "Pay bill":
-                pass
-            case "Till number":
-                pass
-            case "Pochi":
-                pass
+        form=self.formClass(request.POST)
+        if form.is_valid():
+            #Access the varius variables passed in the form to process payments 
+            name= request.POST['name']
+            id_number= request.POST['id_number']
+            means= request.POST['means']
+            description= request.POST['description']
+            #Switch the means so as to process payments based on user selection
+            match means:
+                case "Direct deposit":
+                    pass
+                case "Pay bill":
+                    pass
+                case "Till number":
+                    pass
+                case "Pochi":
+                    pass
+        return render(request, self.template_name,{'form':form})
